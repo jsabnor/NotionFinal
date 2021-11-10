@@ -17,6 +17,9 @@ import java.util.List;
  * @version 1.0
  */
 @RestController
+@CrossOrigin(origins = "*",
+        methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE},
+        allowedHeaders = {"*"})
 public class CategoriaController {
     //ATRIBUTOS
     @Autowired
