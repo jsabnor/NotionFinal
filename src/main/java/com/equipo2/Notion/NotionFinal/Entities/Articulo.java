@@ -1,22 +1,46 @@
 package com.equipo2.Notion.NotionFinal.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Clase Articulo.
+ * PROYECTO NOTION BJ
+ * Equipo Front: heyanabanana y Javier_scr
+ * Equipo Back: Clemen y Josema
+ * @author Clemen y Josema
+ * @version 1.0
+ */
 @Entity
 @Table(name="articulos")
 public class Articulo {
 
     //ATRIBUTOS
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Usuario autor;
+    private String autor;
     private LocalDate fechaCreacion;
     private String titulo;
     private String contenido;
+
+    //Relacion Many To One
+    //@JsonManagedReference
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria categoria;
 
     //CONSTRUCTORES
+
+    /**
+     * Constructor sin parametros
+     */
+    public Articulo() {
+    }
 
     /**
      * Constructor con todos los parametros
@@ -27,7 +51,7 @@ public class Articulo {
      * @param contenido del articulo
      * @param categoria del articulo
      */
-    public Articulo(Long id, Usuario autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria) {
+    public Articulo(Long id, String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria) {
         this.id = id;
         this.autor = autor;
         this.fechaCreacion = fechaCreacion;
@@ -38,8 +62,24 @@ public class Articulo {
 
     //METODOS
 
-    //GETTER Y SETTER
+    /**
+     * Metodo toString
+     * @return String con todos los datos de Articulo
+     */
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "id=" + id +
+                ", autor=" + autor +
+                ", fechaCreacion=" + fechaCreacion +
+                ", titulo='" + titulo + '\'' +
+                ", contenido='" + contenido + '\'' +
+                ", categoria=" + categoria +
+                '}';
+    }
 
+
+    //GETTER Y SETTER
 
     public Long getId() {
         return id;
@@ -49,11 +89,11 @@ public class Articulo {
         this.id = id;
     }
 
-    public Usuario getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
