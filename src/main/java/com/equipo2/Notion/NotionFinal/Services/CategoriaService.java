@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Services;
 
 import com.equipo2.Notion.NotionFinal.Entities.Categoria;
 import com.equipo2.Notion.NotionFinal.Repositories.CategoriaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -18,7 +19,8 @@ import java.util.NoSuchElementException;
 @Service
 public class CategoriaService {
     //ATRIBUTOS
-    private final CategoriaRepository categoriaRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
     private static final String API_BASE="/api/categorias";
 
 

@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Controllers;
 
 import com.equipo2.Notion.NotionFinal.Entities.Usuario;
 import com.equipo2.Notion.NotionFinal.Services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ import java.util.List;
 @RestController
 public class UsuarioController {
     //ATRIBUTOS
-
-    private final UsuarioService usuarioService;
+    @Autowired
+    private UsuarioService usuarioService;
     private static final String API_BASE="/api/usuarios";
 
     //CONTRUCTORES
@@ -45,7 +46,7 @@ public class UsuarioController {
      * @return ResponseEntity OK si existe y NOT FOUND si no existe
      */
     @GetMapping(API_BASE+"/mostrar/{id}")
-    public ResponseEntity<Usuario> findById(Long id){
+    public ResponseEntity<Usuario> findById(@PathVariable Long id){
         if(usuarioService.existByid(id)){
             return new ResponseEntity<>(usuarioService.findById(id), HttpStatus.OK);
         }else{
@@ -95,7 +96,7 @@ public class UsuarioController {
      * @return ResponseEntity NO_CONTENT si lo borra y un NOT_FOUND si no existe en el base de datos
      */
     @DeleteMapping(API_BASE+"/eliminar/{id}")
-    public ResponseEntity<Usuario> deleteById(Long id){
+    public ResponseEntity<Usuario> deleteById(@PathVariable Long id){
         if(usuarioService.existByid(id)){
             usuarioService.deleleById(id);
             return ResponseEntity.noContent().build();
@@ -109,4 +110,5 @@ public class UsuarioController {
     public UsuarioService getUsuarioService() {
         return usuarioService;
     }
+
 }

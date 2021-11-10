@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Services;
 
 import com.equipo2.Notion.NotionFinal.Entities.Articulo;
 import com.equipo2.Notion.NotionFinal.Repositories.ArticuloRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,8 @@ import java.util.NoSuchElementException;
 @Service
 public class ArticuloService {
     //ATRIBUTOS
-    private final ArticuloRepository articuloRepository;
+    @Autowired
+    private ArticuloRepository articuloRepository;
 
     //CONSTRUCTORES
 

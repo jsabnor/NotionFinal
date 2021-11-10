@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Services;
 
 import com.equipo2.Notion.NotionFinal.Entities.Usuario;
 import com.equipo2.Notion.NotionFinal.Repositories.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.NoSuchElementException;
 @Service
 public class UsuarioService {
     //ATRIBUTOS
+    @Autowired
     private final UsuarioRepository usuarioRepository;
     private static final String API_BASE="/api/usuarios";
 

@@ -22,35 +22,35 @@ public class NotionFinalApplication {
 		ArticuloService articuloService=context.getBean(ArticuloService.class);
 		UsuarioService usuarioService=context.getBean(UsuarioService.class);
 		CategoriaService categoriaService=context.getBean(CategoriaService.class);
-/*
+
 		//Creamos un usuario con rol 0 que equivale al rol ADMIN y lo guardamos en la base de datos
-		usuarioService.save(new Usuario(null,
+		usuarioService.save(new Usuario(
 				"josema",
 				"password",
 				"josema@equipo2.com",
 				0));
 		//Creamos un usuario con rol 1 que equivale al rol USER y lo guardamos en la base de datos
-		usuarioService.save(new Usuario(null,
+		usuarioService.save(new Usuario(
 				"clemen",
 				"password",
 				"clemen@equipo2.com",
 				1));
 		//Creamos categorias
-		Categoria cat1=new Categoria(null, "Spring");
-		Categoria cat2=new Categoria(null, "React");
+		Categoria cat1=new Categoria("Spring");
+		Categoria cat2=new Categoria("React");
 
 		//Salvamos en la base de datos
 		categoriaService.save(cat1);
 		categoriaService.save(cat2);
 
 		//Creamos los articulos
-		Articulo art1=new Articulo(null,
+		Articulo art1=new Articulo(
 				"josema",
 				LocalDate.now(),
 				"Tutorial de Spring desde 0",
 				"En este tutorial vamos a ver desde cero como empezar a programar con Spring....",
 				cat1);
-		Articulo art2=new Articulo(null,
+		Articulo art2=new Articulo(
 				"josema",
 				LocalDate.now(),
 				"Despliegue de React en VPS",
@@ -59,7 +59,7 @@ public class NotionFinalApplication {
 		//Los guardamos en la base de datos
 		articuloService.save(art1);
 		articuloService.save(art2);
-*/
+
 
 	}
 

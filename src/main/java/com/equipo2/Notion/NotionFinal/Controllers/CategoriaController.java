@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Controllers;
 
 import com.equipo2.Notion.NotionFinal.Entities.Categoria;
 import com.equipo2.Notion.NotionFinal.Services.CategoriaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ import java.util.List;
 @RestController
 public class CategoriaController {
     //ATRIBUTOS
-
-    private final CategoriaService categoriaService;
+    @Autowired
+    private CategoriaService categoriaService;
     private static final String API_BASE="/api/categorias";
 
     //CONTRUCTORES
@@ -45,7 +46,7 @@ public class CategoriaController {
      * @return ResponseEntity OK si existe y NOT FOUND si no existe
      */
     @GetMapping(API_BASE+"/mostrar/{id}")
-    public ResponseEntity<Categoria> findById(Long id){
+    public ResponseEntity<Categoria> findById(@PathVariable Long id){
         if(categoriaService.existByid(id)){
             return new ResponseEntity<>(categoriaService.findById(id), HttpStatus.OK);
         }else{
@@ -95,7 +96,7 @@ public class CategoriaController {
      * @return ResponseEntity NO_CONTENT si lo borra y un NOT_FOUND si no existe en el base de datos
      */
     @DeleteMapping(API_BASE+"/eliminar/{id}")
-    public ResponseEntity<Categoria> deleteById(Long id){
+    public ResponseEntity<Categoria> deleteById(@PathVariable Long id){
         if(categoriaService.existByid(id)){
             categoriaService.deleleById(id);
             return ResponseEntity.noContent().build();

@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Controllers;
 
 import com.equipo2.Notion.NotionFinal.Entities.Articulo;
 import com.equipo2.Notion.NotionFinal.Services.ArticuloService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ import java.util.List;
 @RestController
 public class ArticuloController {
     //ATRIBUTOS
-
-    private final ArticuloService articuloService;
+    @Autowired
+    private ArticuloService articuloService;
     private static final String API_BASE="/api/articulos";
 
     //CONTRUCTORES
@@ -46,7 +47,7 @@ public class ArticuloController {
      * @return ResponseEntity OK si existe y NOT FOUND si no existe
      */
     @GetMapping(API_BASE+"/mostrar/{id}")
-    public ResponseEntity<Articulo> findById(Long id){
+    public ResponseEntity<Articulo> findById(@PathVariable Long id){
         if(articuloService.existByid(id)){
             return new ResponseEntity<>(articuloService.findById(id), HttpStatus.OK);
         }else{
@@ -96,7 +97,7 @@ public class ArticuloController {
      * @return ResponseEntity NO_CONTENT si lo borra y un NOT_FOUND si no existe en el base de datos
      */
     @DeleteMapping(API_BASE+"/eliminar/{id}")
-    public ResponseEntity<Articulo> deleteById(Long id){
+    public ResponseEntity<Articulo> deleteById(@PathVariable Long id){
         if(articuloService.existByid(id)){
             articuloService.deleleById(id);
             return ResponseEntity.noContent().build();

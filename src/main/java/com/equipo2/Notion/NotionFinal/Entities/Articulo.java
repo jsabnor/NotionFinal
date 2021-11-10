@@ -44,15 +44,13 @@ public class Articulo {
 
     /**
      * Constructor con todos los parametros
-     * @param id Clave primaria de la tabla
      * @param autor usuario que crea el articulo
      * @param fechaCreacion fecha de creacion del articulo
      * @param titulo del articulo
      * @param contenido del articulo
      * @param categoria del articulo
      */
-    public Articulo(Long id, String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria) {
-        this.id = id;
+    public Articulo(String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria) {
         this.autor = autor;
         this.fechaCreacion = fechaCreacion;
         this.titulo = titulo;
@@ -69,8 +67,7 @@ public class Articulo {
     @Override
     public String toString() {
         return "Articulo{" +
-                "id=" + id +
-                ", autor=" + autor +
+                "autor=" + autor +
                 ", fechaCreacion=" + fechaCreacion +
                 ", titulo='" + titulo + '\'' +
                 ", contenido='" + contenido + '\'' +

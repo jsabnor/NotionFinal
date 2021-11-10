@@ -34,14 +34,12 @@ public class Usuario {
 
     /**
      * Cosntructor con parametros
-     * @param id del usuario. Clave primaria
      * @param username nombre de usuario
      * @param password password del usuario
      * @param email del usuario
      * @param rol del usuario
      */
-    public Usuario(Long id, String username, String password, String email, Integer rol) {
-        this.id = id;
+    public Usuario(String username, String password, String email, Integer rol) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -53,8 +51,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", rol=" + rol +

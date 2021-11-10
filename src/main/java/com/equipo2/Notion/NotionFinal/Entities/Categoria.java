@@ -40,11 +40,9 @@ public class Categoria {
 
     /**
      * Constructor con parametros
-     * @param id de la categoria. Clave primaria
      * @param categoria nombre de la categoria
      */
-    public Categoria(Long id, String categoria) {
-        this.id = id;
+    public Categoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -57,8 +55,7 @@ public class Categoria {
     @Override
     public String toString() {
         return "Categoria{" +
-                "id=" + id +
-                ", categoria='" + categoria + '\'' +
+                "categoria='" + categoria + '\'' +
                 '}';
     }
 
