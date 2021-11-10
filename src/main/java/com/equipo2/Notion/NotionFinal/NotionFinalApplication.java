@@ -49,13 +49,13 @@ public class NotionFinalApplication {
 				LocalDate.now(),
 				"Tutorial de Spring desde 0",
 				"En este tutorial vamos a ver desde cero como empezar a programar con Spring....",
-				cat1);
+				cat1,null);
 		Articulo art2=new Articulo(
 				"josema",
 				LocalDate.now(),
 				"Despliegue de React en VPS",
 				"Explicamos en este articulo como desplegar una aplicacion React en un VPS....",
-				cat2);
+				cat2,null);
 		//Los guardamos en la base de datos
 		articuloService.save(art1);
 		articuloService.save(art2);

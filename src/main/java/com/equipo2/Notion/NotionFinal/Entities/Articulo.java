@@ -26,6 +26,7 @@ public class Articulo {
     private LocalDate fechaCreacion;
     private String titulo;
     private String contenido;
+    private String rutaImagen;
 
     //Relacion Many To One
     //@JsonManagedReference
@@ -50,12 +51,13 @@ public class Articulo {
      * @param contenido del articulo
      * @param categoria del articulo
      */
-    public Articulo(String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria) {
+    public Articulo(String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria, String rutaImagen) {
         this.autor = autor;
         this.fechaCreacion = fechaCreacion;
         this.titulo = titulo;
         this.contenido = contenido;
         this.categoria= categoria;
+        this.rutaImagen=rutaImagen;
     }
 
     //METODOS
@@ -72,6 +74,7 @@ public class Articulo {
                 ", titulo='" + titulo + '\'' +
                 ", contenido='" + contenido + '\'' +
                 ", categoria=" + categoria +
+                ", rutaImagen=" + rutaImagen +
                 '}';
     }
 
@@ -124,5 +127,13 @@ public class Articulo {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }
