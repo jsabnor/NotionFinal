@@ -3,6 +3,7 @@ package com.equipo2.Notion.NotionFinal.Controllers;
 import com.equipo2.Notion.NotionFinal.Entities.Articulo;
 import com.equipo2.Notion.NotionFinal.Services.ArticuloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,7 +67,8 @@ public class ArticuloController {
      */
     @PostMapping(API_BASE+"/crear")
     public ResponseEntity<Articulo> save(@RequestBody Articulo articulo){
-        return new ResponseEntity<>(articuloService.save(articulo), HttpStatus.CREATED);
+        articuloService.save(articulo);
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -75,10 +77,12 @@ public class ArticuloController {
      * @return ResponseEntity CREATED si lo crea y existia en la base de datos, o BAD_REQUEST
      * si no exite en la base de datos
      */
-    @PutMapping(API_BASE+"/modificar")
-    public ResponseEntity<Articulo> update(@RequestBody Articulo articulo){
-        if(articuloService.existByid(articulo.getId())){
-            return new ResponseEntity<>(articuloService.save(articulo), HttpStatus.CREATED);
+    @PutMapping(API_BASE+"/modificar/{id}")
+    public ResponseEntity<Articulo> update(@PathVariable Long id, @RequestBody Articulo articulo){
+        if(articuloService.existByid(id)){
+            articuloService.save(articulo);
+            return ResponseEntity.ok().build();
+            //return new ResponseEntity<>(articuloService.save(articulo), HttpStatus.CREATED);
         }else{
             return ResponseEntity.badRequest().build();
         }

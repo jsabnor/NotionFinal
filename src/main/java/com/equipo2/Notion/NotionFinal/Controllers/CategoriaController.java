@@ -65,7 +65,9 @@ public class CategoriaController {
      */
     @PostMapping(API_BASE+"/crear")
     public ResponseEntity<Categoria> save(@RequestBody Categoria categoria){
-        return new ResponseEntity<>(categoriaService.save(categoria), HttpStatus.CREATED);
+        categoriaService.save(categoria);
+        return ResponseEntity.ok().build();
+        //return new ResponseEntity<>(categoriaService.save(categoria), HttpStatus.CREATED);
     }
 
     /**
@@ -74,10 +76,12 @@ public class CategoriaController {
      * @return ResponseEntity CREATED si lo crea y existia en la base de datos, o BAD_REQUEST
      * si no exite en la base de datos
      */
-    @PutMapping(API_BASE+"/modificar")
-    public ResponseEntity<Categoria> update(@RequestBody Categoria categoria){
+    @PutMapping(API_BASE+"/modificar/{id}")
+    public ResponseEntity<Categoria> update(@PathVariable Long id, @RequestBody Categoria categoria){
         if(categoriaService.existByid(categoria.getId())){
-            return new ResponseEntity<>(categoriaService.save(categoria), HttpStatus.CREATED);
+            categoriaService.save(categoria);
+            return ResponseEntity.ok().build();
+            //return new ResponseEntity<>(categoriaService.save(categoria), HttpStatus.CREATED);
         }else{
             return ResponseEntity.badRequest().build();
         }
