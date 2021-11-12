@@ -25,7 +25,7 @@ public class Categoria {
     private String categoria;
 
     //Relacion One to Many con Articulos
-    @JsonManagedReference
+    //@JsonManagedReference
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
     private List<Articulo> articulos=new ArrayList<>();
