@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -16,7 +17,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name="articulos")
-public class Articulo {
+public class Articulo{
 
     //ATRIBUTOS
     @Id
@@ -30,9 +31,9 @@ public class Articulo {
 
     //Relacion Many To One
     //@JsonManagedReference
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria", nullable = false)
+    //@JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_categorias")
     private Categoria categoria;
 
     //CONSTRUCTORES

@@ -59,8 +59,8 @@ public class NotionFinalApplication {
 		//Los guardamos en la base de datos
 		articuloService.save(art1);
 		articuloService.save(art2);
-*/
 
+*/
 	}
 
 }

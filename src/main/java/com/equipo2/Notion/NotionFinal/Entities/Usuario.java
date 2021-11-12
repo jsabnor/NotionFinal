@@ -2,6 +2,7 @@ package com.equipo2.Notion.NotionFinal.Entities;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario{
     //ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

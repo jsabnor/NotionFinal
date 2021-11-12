@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "categorias")
-public class Categoria {
+public class Categoria{
     //ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,8 +28,8 @@ public class Categoria {
     //Relacion One to Many con Articulos
     //@JsonManagedReference
     //@JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
-    private List<Articulo> articulos=new ArrayList<>();
+    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+    //private List<Articulo> articulos=new ArrayList<>();
 
     //CONSTRUCTORES
 
@@ -48,16 +49,6 @@ public class Categoria {
 
 
     //METODOS
-    /**
-     * Metodo toString
-     * @return String con todos los datos de Categoria
-     */
-    @Override
-    public String toString() {
-        return "Categoria{" +
-                "categoria='" + categoria + '\'' +
-                '}';
-    }
 
 
     //GETTER Y SETTER
@@ -79,11 +70,11 @@ public class Categoria {
         this.categoria = categoria;
     }
 
-    public List<Articulo> getArticulos() {
+    /*public List<Articulo> getArticulos() {
         return articulos;
     }
 
     public void setArticulos(List<Articulo> articulos) {
         this.articulos = articulos;
-    }
+    }*/
 }
