@@ -29,7 +29,7 @@ public class Articulo {
     private String rutaImagen;
 
     //Relacion Many To One
-    //@JsonManagedReference
+    @JsonManagedReference
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria", nullable = false)
