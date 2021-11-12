@@ -30,7 +30,7 @@ public class Articulo {
 
     //Relacion Many To One
     //@JsonManagedReference
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_categoria", nullable = false)
     private Categoria categoria;
