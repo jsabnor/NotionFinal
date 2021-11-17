@@ -53,7 +53,7 @@ public class Articulo{
      */
     public Articulo(String autor, String titulo, String contenido, Categoria categoria, String rutaImagen) {
         this.autor = autor;
-        this.fechaCreacion = Date.now();
+        this.fechaCreacion = LocalDate.now();
         this.titulo = titulo;
         this.contenido = contenido;
         this.categoria= categoria;
