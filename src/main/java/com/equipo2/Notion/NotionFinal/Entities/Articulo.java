@@ -47,13 +47,14 @@ public class Articulo{
     /**
      * Constructor con todos los parametros
      * @param autor usuario que crea el articulo
+     * @param fechaCreacion fecha de creacion del articulo
      * @param titulo del articulo
      * @param contenido del articulo
      * @param categoria del articulo
      */
-    public Articulo(String autor, String titulo, String contenido, Categoria categoria, String rutaImagen) {
+    public Articulo(String autor, LocalDate fechaCreacion, String titulo, String contenido, Categoria categoria, String rutaImagen) {
         this.autor = autor;
-        this.fechaCreacion = LocalDate.now();
+        this.fechaCreacion = fechaCreacion;
         this.titulo = titulo;
         this.contenido = contenido;
         this.categoria= categoria;
